@@ -20,8 +20,8 @@ zstyle ':vcs_info:git*' stagedstr '+'
 # but can be slow on large repos
 zstyle ':vcs_info:*:*' check-for-changes true
 
-host() {
-    case "%m" in
+which_host() {
+    case "$(hostname)" in
       meredith) color=blue ;;
       emily) color=green ;;
       spencer) color=yellow ;;
@@ -97,5 +97,5 @@ ZSH_THEME_GIT_PROMPT_DIRTY="%F{yellow}*"
 ZSH_THEME_GIT_PROMPT_DIRTY="%F{yellow}*"
 ZSH_THEME_GIT_PROMPT_CLEAN=""
 
-PROMPT='$(return_status) $(host)$(git_prompt_info) $(prompt_indicator) '
+PROMPT='$(return_status) $(which_host)$(git_prompt_info) $(prompt_indicator) '
 RPROMPT='%F{8}$(truncated_pwd 2)%f'
